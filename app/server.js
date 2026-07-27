@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./kafka-consumer');
 const express = require('express');
 const pgPool = require('./db/postgres');
 const esClient = require('./db/elasticsearch');
@@ -43,11 +44,11 @@ app.post('/products', async (req, res) => {
 });
 
 
-const processOutbox = require('./outbox-poller');
+// const processOutbox = require('./outbox-poller');
 
-setInterval(() => {
-  processOutbox();
-}, 5000);
+// setInterval(() => {
+//   processOutbox();
+// }, 5000);
 
 const PORT = 3000;
 app.listen(PORT, () => {
